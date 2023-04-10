@@ -1,0 +1,36 @@
+{
+  "name": "Web Translator",
+  "description": "select text,translate and replace it with result",
+  "version": "2.0",
+  "manifest_version": 3,
+  "author":"Adeel Ahmad",
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_popup": "textPallet.html"
+  },
+  "icons": {
+    "48":"icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["contextMenus","storage"],
+ 
+  "content_scripts": [
+    {
+      
+        "matches": ["https://*/*","http://*/*"],
+        
+        "js": ["js/content.js","js/modal.js","js/country.js"],
+        "css": ["content.css"]
+    }
+    
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["Modal/modal.html"],
+      "host_permissions": ["<all_urls>"]
+    }
+  ]
+}
